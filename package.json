@@ -1,0 +1,17 @@
+{
+  "name": "monitor-pm2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mbecker20/monitor-pm2.git",
+  "author": "mbecker20",
+  "license": "GPL v3.0",
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "fastify": "^3.29.0",
+    "fastify-plugin": "^3.0.1",
+    "pm2": "^5.2.0"
+  }
+}
