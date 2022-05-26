@@ -1,4 +1,4 @@
-import { trimProcess } from "./pm2"
+import { trimProcess } from "./helpers/pm2"
 
 export type CommandLogError = {
 	command: string;

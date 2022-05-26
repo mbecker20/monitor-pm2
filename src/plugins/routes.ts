@@ -1,14 +1,18 @@
 import { FastifyInstance } from "fastify";
 import fp from "fastify-plugin";
-import { deletePm2, getPm2Log, listPm2Processes, restartPm2, startPm2, stopPm2 } from "./pm2";
+import { deletePm2, getPm2Log, listPm2Processes, restartPm2, startPm2, stopPm2 } from "../helpers/pm2";
 
 const routes = fp((app: FastifyInstance, _: {}, done: () => void) => {
+	app.get("/enabled", async (_, res) => {
+		res.send();
+	});
+
 	app.get("/processes", async (_, res) => {
 		const processes = await listPm2Processes();
 		res.send(processes);
 	});
 
-	app.get('/logs/:name', async (req, res) => {
+	app.get('/log/:name', async (req, res) => {
 		const { name } = req.params as { name: string };
 		const { lines } = req.query as { lines: number };
 		if (name) {

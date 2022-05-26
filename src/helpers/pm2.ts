@@ -1,18 +1,6 @@
 import pm2, { ProcessDescription } from "pm2";
 import { execute } from "./helpers";
-import { Pm2Process } from "./types";
-
-export function connectToPm2(): Promise<void> {
-	return new Promise((res, rej) => {
-		pm2.connect((err) => {
-			if (err) {
-				rej(err)
-			} else {
-				res();
-			}
-		})
-	})
-}
+import { Pm2Process } from "../types";
 
 export function trimProcess(p: ProcessDescription) {
 	return {

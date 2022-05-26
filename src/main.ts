@@ -1,14 +1,15 @@
 import Fastify from "fastify";
-import { connectToPm2 } from "./pm2";
-import routes from "./routes";
+import pm2Plugin from "./plugins/pm2Plugin";
+import routes from "./plugins/routes";
 
 const app = Fastify({ logger: true });
 
-app.register(routes);
+app
+	.register(pm2Plugin)
+	.register(routes);
 
 const start = async () => {
 	try {
-		await connectToPm2();
 		await app.listen(4000, "0.0.0.0");
 	} catch (err) {
 		app.log.error(err);

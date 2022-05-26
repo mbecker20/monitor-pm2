@@ -1,6 +1,6 @@
 import { exec } from "child_process";
 import { promisify } from "util";
-import { CommandLogError } from "./types";
+import { CommandLogError } from "../types";
 
 const pExec = promisify(exec);
 
