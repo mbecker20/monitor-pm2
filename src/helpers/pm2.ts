@@ -29,27 +29,22 @@ export function listPm2Processes(): Promise<Pm2Process[]> {
 }
 
 export async function getPm2Log(name: string, lines = 50) {
-	const res = await execute(`pm2 logs ${name} --nostream --lines ${lines}`);
-	return res.log;
+	return await execute(`pm2 logs ${name} --nostream --lines ${lines}`);
 }
 
 export async function startPm2(name: string) {
-	const res = await execute(`pm2 start ${name}`);
-	return res.log;
+	return await execute(`pm2 start ${name}`);
 }
 
 export async function stopPm2(name: string) {
-	const res = await execute(`pm2 stop ${name}`);
-	return res.log;
+	return await execute(`pm2 stop ${name}`);
 }
 
 export async function restartPm2(name: string) {
-	const res = await execute(`pm2 restart ${name}`);
-	return res.log;
+	return await execute(`pm2 restart ${name}`);
 }
 
 export async function deletePm2(name: string) {
-	const res = await execute(`pm2 delete ${name}`);
-	return res.log;
+	return await execute(`pm2 delete ${name}`);
 }
 
