@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 import fp from "fastify-plugin";
-import { deletePm2, getPm2Log, listPm2Processes, restartPm2, startPm2, stopPm2 } from "../helpers/pm2";
+import { deletePm2, flushLogs, getPm2Log, listPm2Processes, restartPm2, startPm2, stopPm2 } from "../helpers/pm2";
 
 const routes = fp((app: FastifyInstance, _: {}, done: () => void) => {
 	app.get("/enabled", async (_, res) => {
@@ -66,6 +66,12 @@ const routes = fp((app: FastifyInstance, _: {}, done: () => void) => {
 			res.status(400);
 			res.send("specify a name");
 		}
+	});
+
+	app.get("/flush", async (req, res) => {
+		const { name } = req.query as { name?: string };
+		const log = await flushLogs(name);
+		res.send(log);
 	});
 
 	done();

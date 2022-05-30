@@ -48,3 +48,6 @@ export async function deletePm2(name: string) {
 	return await execute(`pm2 delete ${name}`);
 }
 
+export async function flushLogs(name?: string) {
+	return await execute(`pm2 flush${name ? " " + name : ""}`);
+}
